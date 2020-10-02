@@ -4,6 +4,7 @@ import (
 	"errors"
 	"fmt"
 	"io/ioutil"
+	"log"
 	"net/http"
 
 	"github.com/aws/aws-lambda-go/events"
@@ -22,6 +23,7 @@ var (
 )
 
 func handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
+	log.Printf("DefaultHTTPGetAddress: %v", DefaultHTTPGetAddress)
 	resp, err := http.Get(DefaultHTTPGetAddress)
 	if err != nil {
 		return events.APIGatewayProxyResponse{}, err
